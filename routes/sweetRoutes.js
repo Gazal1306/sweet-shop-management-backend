@@ -2,18 +2,15 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  addSweet,
   getSweets,
+  addSweet,
   updateSweet,
-  deleteSweet
+  deleteSweet,
 } = require("../controllers/sweetController");
 
-// 🔴 THIS LINE WAS MISSING
-const auth = require("../middleware/auth");
-
-router.post("/", auth, addSweet);
-router.get("/", auth, getSweets);
-router.put("/:id", auth, updateSweet);
-router.delete("/:id", auth, deleteSweet);
+router.get("/", getSweets);
+router.post("/", addSweet);
+router.put("/:id", updateSweet);
+router.delete("/:id", deleteSweet);
 
 module.exports = router;
